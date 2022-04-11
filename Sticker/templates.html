@@ -1,0 +1,40 @@
+<style>
+    
+    .sticker-text{
+        paint-order: stroke fill; 
+        stroke: white;
+        stroke-width: 20px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        font-weight: 800;
+        font-size: 80px;
+        font-style: italic;
+        font-family: 'Titan One';
+        font-weight: 900;
+        font-style: normal;
+        text-transform: uppercase;
+        box-shadow: rgba(100, 100, 111, 0.2) ;
+        filter: drop-shadow( 3px 3px 2px rgba(100, 100, 111, 0.2));
+    }
+</style>
+
+<!--Using an SVG as Paint-Order is only supported in chrome on SVGs-->
+<svg  class="sticker" id="sticker" width="100%" transform='rotate(-5)'>
+    <defs>
+        <linearGradient id="rainbow" x1="0" x2="100%" y1="0" y2="0" gradientUnits="userSpaceOnUse" >
+            <stop stop-color="#ef548f" offset="0%"/>
+            <stop stop-color="#ef8b6d" offset="25%"/>
+            <stop stop-color="#cfef6b" offset="50%"/>
+            <stop stop-color="#3bf0c1" offset="75%"/>
+            <stop stop-color="#bb4af0" offset="100%"/>
+        </linearGradient>
+        </defs>
+    <text fill="url(#rainbow)" x="30px" y="90px" class="sticker-text">{{text}}</text>
+</svg> 
+
+<script>
+    var  svg = document.getElementById("sticker");
+    var  bbox = svg.getBBox();
+    svg.setAttribute("width", bbox.x + bbox.width + bbox.x);
+    svg.setAttribute("height", bbox.y + bbox.height + bbox.y);      
+</script>
